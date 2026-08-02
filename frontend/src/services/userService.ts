@@ -1,6 +1,6 @@
 export const UserService = {
   async getCurrentUser() {
-    const response = await fetch('http://192.168.1.102:3001/api/v1/user', {
+    const response = await fetch('http://192.168.1.103:3001/api/v1/user', {
       method: 'GET',
       credentials: 'include',
       headers: {

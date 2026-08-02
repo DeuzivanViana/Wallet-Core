@@ -1,6 +1,6 @@
 export const WalletService = {
   async getCurrentWallet() {
-    const response = await fetch('http://192.168.1.102:3001/api/v1/wallet', {
+    const response = await fetch('http://192.168.1.103:3001/api/v1/wallet', {
       method: 'GET',
       credentials: 'include',
       headers: {

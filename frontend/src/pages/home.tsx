@@ -1,25 +1,10 @@
 'use client'
 
-import { 
-  ChevronRight, 
-  CreditCard, 
-  ArrowUpRight, 
-  ArrowDownLeft, 
-  Plus, 
-  History,
-  User
-} from 'lucide-react'
 import { Layout } from '../components/Layout'
 import { useEffect, useState } from 'react'
 import { UserService } from '../services/userService'
 import { WalletService } from '../services/walletService'
-
-// Dados Mockados para simular o backend futuramente
-const MOCK_TRANSACTIONS = [
-  { id: 1, title: 'Netflix', type: 'out', amount: 39.90, date: 'Hoje, 10:45' },
-  { id: 2, title: 'Transferência recebida', type: 'in', amount: 1250.00, date: 'Ontem, 15:30' },
-  { id: 3, title: 'Mercado Local', type: 'out', amount: 145.20, date: '28 Ago, 19:10' },
-]
+import { ArrowBigDown, ArrowBigLeftDash, ArrowBigUp, MoveDownLeft, Plus, Send } from 'lucide-react'
 
 export const Home = () => {
   const [user, setUser] = useState<any>(null)
@@ -39,6 +24,32 @@ export const Home = () => {
 
   return (
     <Layout>
+      <div className='p-6 bg-neutral-950 text-neutral-50'>
+        <h1 className='font-bold text-2xl'>
+          <span className='text-neutral-500 text-lg'>RHO:</span>
+          <span>{ wallet ? wallet.balance : 'loading...'}</span>
+        </h1>
+        <h1 className='text-neutral-500 font-bold'>
+          <span className='text-neutral-700'>Welcome back,</span>
+          <span>{ user ? user.username : 'loading...' }</span>
+        </h1>
+      </div>
+
+      <div className='bg-neutral-950 p-6 rounded-md text-neutral-500 flex justify-between fixed w-full bottom-0'>
+        <div className='flex flex-col bg-neutral-900 p-4 w-20 h-20 rounded-md justify-center items-center'>
+          <MoveDownLeft/>
+          <h1>Recive</h1>
+        </div>
+        <div className='flex flex-col bg-neutral-900 p-4 w-20 h-20 rounded-md justify-center items-center'>
+          <Send/>
+          <h1>Send</h1>
+        </div>
+        <div className='flex flex-col bg-neutral-900 p-4 w-20 h-20 rounded-md justify-center items-center'>
+          <Plus/>
+          <h1>Add</h1>
+        </div>
+      </div>
+      
     </Layout>
   )
 }

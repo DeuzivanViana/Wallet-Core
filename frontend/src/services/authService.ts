@@ -10,7 +10,7 @@ type SignUpProps = {
 
 export const AuthService = {
   async signIn(props: SignInProps) {
-    const response = await fetch('http://192.168.1.102:3001/api/v1/auth/sign-in', {
+    const response = await fetch('http://192.168.1.103:3001/api/v1/auth/sign-in', {
       method: 'POST',
       credentials: 'include',
       headers: {
@@ -27,7 +27,7 @@ export const AuthService = {
     return data
   },
   async signUp(props: SignUpProps) {
-     const response = await fetch('http://192.168.1.102:3001/api/v1/auth/sign-up', {
+     const response = await fetch('http://192.168.1.103:3001/api/v1/auth/sign-up', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json;charset=UTF-8'
