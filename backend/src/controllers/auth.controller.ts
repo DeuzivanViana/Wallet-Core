@@ -1,4 +1,3 @@
-import { jwt } from '@elysia/jwt'
 import { db } from '../db/database'
 import { ValidationError } from 'elysia'
 import { AuthService } from '../services/auth.service'
