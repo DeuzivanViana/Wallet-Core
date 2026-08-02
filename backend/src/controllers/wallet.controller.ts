@@ -1,10 +1,11 @@
 import { db } from '../db/database'
 import { WalletService } from '../services/wallet.service'
+import { JwtProvider } from '../utils/jwt'
 
 export const WalletController = {
-  async getCurrentWallet({ jwt, cookie: { auth }, set }: any) {
+  async getCurrentWallet({ cookie: { auth }, set }: any) {
     try {
-      const user = jwt.verify(auth.value)
+      const user = await JwtProvider.verify(auth.value)
       
       if(!user) throw Error('No wallet found')
 

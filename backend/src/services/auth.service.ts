@@ -1,4 +1,5 @@
 import { db } from '../db/database'
+import { JwtProvider } from '../utils/jwt'
 
 export const AuthService = {
   async registerUser(data: any) {
@@ -33,5 +34,10 @@ export const AuthService = {
     })
 
     return user
+  },
+  async verify(token: string) {
+    const user = JwtProvider.verify(token)
+
+    console.log(user)
   }
 }

@@ -3,6 +3,7 @@ import { db } from '../db/database'
 import { ValidationError } from 'elysia'
 import { AuthService } from '../services/auth.service'
 import { WalletService } from '../services/wallet.service'
+import { JwtProvider } from '../utils/jwt'
 
 export const AuthController = {
   async signUp({jwt, body, set, cookie: { auth }}: any) {
@@ -23,11 +24,11 @@ export const AuthController = {
     }
   },
 
-  async signIn({jwt, body, set, cookie: { auth }}: any) {
+  async signIn({ body, set, cookie: { auth }}: any) {
     try {
       const user = await AuthService.authenticateUser(body)
       
-      const token = await jwt.sign({
+      const token = await JwtProvider.sign({
         id: user.id
       })
       
