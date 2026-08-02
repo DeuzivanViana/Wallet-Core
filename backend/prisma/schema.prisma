@@ -1,0 +1,34 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id String @default(uuid()) @id
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+  roles String @default("user")
+  
+  username String @unique
+  displayName String
+  passwordHash String
+}
+
+model Session {
+  id String @default(uuid()) @id
+  createdAt DateTime @default(now())
+  expiresAt DateTime @default(dbgenerated("(NOW() + '31 days'::interval)"))
+  
+  owner_id String
+}
+
+model Wallet {
+  id String @default(uuid()) @id
+  owner_id String @unique
+
+  balance Int @default(0)
+}
